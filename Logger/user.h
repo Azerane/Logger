@@ -8,8 +8,12 @@
 #include <algorithm>
 #include <fstream>
 #include "sha256.h"
+#include "database.h"
+#include <vector>
 
 #define DATA_USER "R-type UserData.data"
+
+class DataBase;
 
 class User {
 private:
@@ -19,13 +23,15 @@ private:
 	std::string _hash;
 
 public:
-	User(int);
+	User();
+	User(std::string &, std::string &, std::string &, std::string &);
 	~User();
+	int CreateNewUser(std::vector<std::string> &);
+	std::string getEmail(void) const;
+	std::string getNickname(void) const;
 
 private:
-	void CreateNewUser();
 	void ExportUser(void);
-	void ImportUser(void);
 	std::string GenerateSalt(unsigned int length);
 	std::string GenerateHash(std::string &, std::string &);
 };

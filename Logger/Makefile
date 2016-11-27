@@ -10,7 +10,8 @@
 
 SRCS = main.cpp \
 	sha256.cpp \
-	user.cpp
+	user.cpp \
+	database.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
