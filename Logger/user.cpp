@@ -13,7 +13,6 @@ User::~User()
 void User::CreateNewUser()
 {
 	std::string _password;
-	std::string _salt;
 	std::cout << "Email: ";
 	std::cin >> _email;
 	std::cout << "Nickname: ";
@@ -22,12 +21,15 @@ void User::CreateNewUser()
 	std::cin >> _password;
 	_salt = GenerateSalt(32);
 	_hash = GenerateHash(_password, _salt);
-	std::cout << "Genated HASH: " << _hash << std::endl;
+	std::cout << " Genated HASH: " << _hash << std::endl;
+	this->ExportUser();
 	std::cin >> _password;
 }
 
 void User::ExportUser(void)
 {
+	std::ofstream outputfile(DATA_USER);
+	outputfile << _email << ";" << _nickname << ";" << _salt << ";" << _hash << std::endl;
 }
 
 void User::ImportUser(void)

@@ -6,7 +6,10 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
+#include <fstream>
 #include "sha256.h"
+
+#define DATA_USER "R-type UserData.data"
 
 class User {
 private:
